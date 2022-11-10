@@ -1,0 +1,331 @@
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    background-image: linear-gradient(210deg, rgb(243, 239, 236), rgba(51, 79, 155, 0.708) 150%);
+  
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+#menuBtn:hover{
+  transform: scale(1.05); 
+  background-color: #ffff;
+  border-color: #ffff;
+}
+
+.container {
+  padding: 4rem 0;
+  background-image: linear-gradient(210deg, q, rgb(51, 79, 155) 150%);
+  min-height: 78vh;
+ 
+  display: grid;
+  grid-template-columns: 50% 50%;
+  border-radius: 10px;
+  overflow:hidden;
+}
+
+.containerLeft {
+  display:flex;
+  flex-direction: column;
+  justify-content: content;
+  background-color: transparent;
+  margin-top: 20vh;
+  color: transparent;
+  
+}
+
+.containerRight {
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: transparent;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  position: relative;
+  z-index: 3;
+ 
+}
+
+.shadowBox{
+  position: relative;
+  z-index: 4;
+}
+.gradient-text {
+  /* Fallback: Set a background color. */
+  background-color: #CA4246;
+  
+  /* Create the gradient. */
+   background-image: linear-gradient(
+        45deg,
+        #E16541 16.666%, 
+        #E16541 16.666%, 
+        #476098 33.333%, 
+        #476098 33.333%, 
+        #E16541 50%, 
+        #E16541 50%, 
+        #476098 66.666%, 
+        #476098 66.666%, 
+        #E16541 83.333%, 
+        #E16541 83.333%);
+  
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+
+}
+
+.gradient-text:hover{
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+
+.gradient-text2 {
+  /* Fallback: Set a background color. */
+  background-color: #CA4246;
+  
+  /* Create the gradient. */
+   background-image: linear-gradient(
+        45deg,
+        #476098 16.666%, 
+        #476098 16.666%, 
+        #476098 33.333%, 
+        #476098 33.333%, 
+        #476098 50%, 
+        #E16541 50%, 
+        #E16541 66.666%, 
+        #E16541 66.666%, 
+        #E16541 83.333%, 
+        #E16541 83.333%);
+  
+  /* Set the background size and repeat properties. */
+  background-size: 100%;
+  background-repeat: repeat;
+
+  /* Use the text as a mask for the background. */
+  /* This will show the gradient as a text color rather than element bg. */
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent; 
+  
+  /* Animate the text when loading the element. */
+    /* This animates it on page load and when hovering out. */
+    animation: rainbow-text-simple-animation-rev 0.75s ease forwards;
+
+}
+
+.gradient-text2:hover{
+    animation: rainbow-text-simple-animation 0.5s ease-in forwards;
+}
+
+
+/* Move the background and make it smaller. */
+/* Animation shown when entering the page and after the hover animation. */
+@keyframes rainbow-text-simple-animation-rev {
+    0% {
+        background-size: 650%;
+    }
+    40% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 100%;
+    }
+}
+
+/* Move the background and make it larger. */
+/* Animation shown when hovering over the text. */
+@keyframes rainbow-text-simple-animation {
+    0% {
+        background-size: 100%;
+    }
+    80% {
+        background-size: 650%;
+    }
+    100% {
+        background-size: 650%;
+    }
+}
+
+.bg-properties{
+  background-color: #c7370f;
+}
+
+.custombtn{
+  box-shadow: 3px 3px 0 0 #E16541;
+  background-image: linear-gradient(360deg, #ffff, #fffa);
+}
+
+.custombtn:hover{
+  box-shadow: 3px 3px 3px 1px #E16541;
+
+}
+
+.custombtn2{
+  box-shadow: 5px 5px 1px 0 #E16541;
+  background-image: linear-gradient(360deg, #ffff, #fffa);
+}
+
+
+.custombtn2:hover{
+  box-shadow: 5px 5px 1px 0 #c7370f;
+}
+
+.custombtn3{
+  box-shadow: 3px 3px 2px 0 #476098;
+  background-image: linear-gradient(360deg, #ffff, #fffa);
+}
+
+.custombtn3:hover{
+  box-shadow: 3px 3px 5px 4px #476098;
+}
+
+.custombtn4{
+  box-shadow: 3px 3px 0 0 #E16541;
+  
+}
+
+.custombtn4:hover{
+  box-shadow: 3px 3px 3px 1px #E16541;
+
+}
+
+.special-background{
+  opacity: 85%;
+}
+
+#responsiveImg{
+  position: relative;
+  z-index: 3;
+}
+
+#responsiveImg:hover{
+  -ms-transform: rotate(15deg); /* IE 9 */
+    -webkit-transform: rotate(15deg); /* Chrome, Safari, Opera */
+    transform: rotate(15deg);
+}
+
+@media screen and (min-width: 600px){
+  #memHmenu{
+    display: none;
+  }
+
+}
+@media screen and (max-width: 600px){
+  #bigScreen{
+    display: none;
+  }
+
+}
+
+@media screen and (MIN-width: 600px){
+  #smallScreen{
+    display: none;
+  }
+
+}
+
+
+.contain{
+  margin:  5vh 10vh 5vh 10vh;
+  min-height: 55vh;
+}
+
+.modal-properties{
+  padding-top: 35vh;
+  background-image: linear-gradient(360deg, #476098, #e16441c7);
+}
+
+.bg-gradient{
+  background-color: #E16541;
+  border-radius: 2px;
+}
+
+.button-positioning{
+    
+    margin: 5vh ;
+}
+.button-small-positioning{
+  margin-top: 7vh ; 
+  margin-left: 1vh;
+  
+}
+
+.btn-xl {
+  padding: 20px 5px;
+  font-size: 50px;
+  border-radius: 10px;
+  margin-right: 10vh;
+}
+
+.btn-xxl {
+  margin-left: 20vh;
+  margin-top: 5vh;
+  padding: 5vh 5vh;
+  font-size: 50px;
+  border-radius: 10px;
+  border: 0cm;
+}
+
+#img-wrapper{
+  max-width: 50vh;
+}
+
+.collection-card{
+  max-width: 80vh;
+  float:none;
+  justify-content: center;
+  margin-left: auto;
+  margin-right: auto;
+ 
+ 
+}
+
+
+
