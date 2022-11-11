@@ -1157,7 +1157,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:>=12.0.0":
+"@types/node@npm:*":
   version: 18.7.23
   resolution: "@types/node@npm:18.7.23"
   checksum: 2c8df0830d8345e5cd1ca17feb9cf43fa667aae749888e0a068c5c1b35eaedd2f9b24ed987a0758078395edf7a03681e5e0b7790a518ff7afe1ff6d8459f7b4a
@@ -1168,6 +1168,13 @@ __metadata:
   version: 10.17.60
   resolution: "@types/node@npm:10.17.60"
   checksum: 2cdb3a77d071ba8513e5e8306fa64bf50e3c3302390feeaeff1fd325dd25c8441369715dfc8e3701011a72fed5958c7dfa94eb9239a81b3c286caa4d97db6eef
+  languageName: node
+  linkType: hard
+
+"@types/node@npm:^18.11.9":
+  version: 18.11.9
+  resolution: "@types/node@npm:18.11.9"
+  checksum: cc0aae109e9b7adefc32eecb838d6fad931663bb06484b5e9cbbbf74865c721b03d16fd8d74ad90e31dbe093d956a7c2c306ba5429ba0c00f3f7505103d7a496
   languageName: node
   linkType: hard
 
@@ -4252,7 +4259,7 @@ __metadata:
     "@typechain/hardhat": ^6.1.2
     "@types/chai": ^4.2.0
     "@types/mocha": ^9.1.0
-    "@types/node": ">=12.0.0"
+    "@types/node": ^18.11.9
     chai: ^4.2.0
     dotenv: ^16.0.3
     ethers: ^5.4.7
@@ -4261,6 +4268,7 @@ __metadata:
     hardhat-typechain: ^0.3.5
     mocha: ^10.0.0
     solidity-coverage: ^0.8.0
+    ts-dotenv: ^0.9.0
     ts-node: ">=8.0.0"
     typechain: ^8.1.0
     typescript: ">=4.5.0"
@@ -6348,6 +6356,13 @@ __metadata:
   bin:
     write-markdown: dist/write-markdown.js
   checksum: f74a3461891c2a52cc3fd850ad53e983972ba8208410c441a4491f66d15e5d5ea6bed696cbdb54427d6b798b902f841f0c9d3ed13468c2e179285b7507df7a0d
+  languageName: node
+  linkType: hard
+
+"ts-dotenv@npm:^0.9.0":
+  version: 0.9.0
+  resolution: "ts-dotenv@npm:0.9.0"
+  checksum: 4c1089d8416c7c6c74e526c7227387b68603436ca1ca01f175efdcef6dbbc66c71f251981c6a50fe2f4754a57e06b094e7b9c5814ad0c1a55328517db624dde6
   languageName: node
   linkType: hard
 
