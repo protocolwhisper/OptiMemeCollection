@@ -7,7 +7,7 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: process.env.ALCHEMY_API_KEY,
+        url: process.env.ALCHEMY_API_KEY as string,
       },
     },
   },
