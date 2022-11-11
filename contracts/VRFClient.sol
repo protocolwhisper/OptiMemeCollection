@@ -1,6 +1,6 @@
 pragma solidity ^0.8.17;
 
-
+import "./VRFClientBase.sol";
 
 contract VRFClient is VRFClientBase {
     address owner;
