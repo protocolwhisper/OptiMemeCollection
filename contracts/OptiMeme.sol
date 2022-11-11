@@ -60,12 +60,22 @@ contract optiMeme is
         super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
     }
 
-    function _timetomint() private pure returns (uint256) {
+    function _nftToMint() public view returns (uint) {
         //TODO: Implement the time of the mint
+        uint timeStamp = block.timestamp;
+        uint randomTokenId = block.difficulty;
+        uint mixedRandom = uint256(timeStamp + randomTokenId) % 3500;
+        return mixedRandom;
     }
 
-    function getRandomNumber() public view returns (uint256 randomNumber) {
+    function _timeToMint() public view returns (uint256) {
         return block.difficulty; //Whay if we do use signatures and this random number to
         // Get a more random number
+    }
+
+    function _time() public view returns (uint256) {
+        return block.timestamp; //Whay if we do use signatures and this random number to
+        // Get a more random number
+        //
     }
 }
