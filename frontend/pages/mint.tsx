@@ -1,6 +1,9 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useState } from 'react';
 import type { NextPage } from 'next';
+import { ConnectButton } from '@rainbow-me/rainbowkit';
+import  PurchaseTokens from '../components/transactions/Mint';
+import UserBalance from '../components/UserBalance';
+import TotalMints  from '../components/TotalMints';
+import { useState } from 'react';
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import Menu from '../components/Menu'
@@ -50,11 +53,14 @@ const Home: NextPage = () => {
           </h5>
           </div>        
         <div className='container custombtn2 bg-transparent mb-5' >
+          
         <Card className='padding bg-primary custombtn3'>
           
-          <Card.Img as={Image}  fluid={true} alt="Card image" src={gift}></Card.Img>   
+          
+            <Image width={2048} height={2048} alt="Card image" src={gift}/>
+            
           <Card.Title className='fs-1 p-4 '>Surprise Box</Card.Title>
-          <Card.Subtitle className='fs-5 p-4 '>Mint one (or more) of the 5000 unique Memes Against Humanity!</Card.Subtitle>
+          <Card.Subtitle className='fs-5 p-4 '>Mint one (or more) of the ∞ unique Memes Against Humanity!</Card.Subtitle>
         
         
           
@@ -69,26 +75,13 @@ const Home: NextPage = () => {
                         
                         
 
-                        <div className='d-inline-block'>
-                        <h3 className='text-black mt-3 mx-4'>Price: 525 USD</h3>
-                        <h4 className='text-black mt-3 mx-4 text-muted'>Available: 1420/5000</h4>
+                        <div className='d-inline-block px-4 text-black fw-bold fs-2'>
+                        <UserBalance/>
+                        <TotalMints/>
+                        <h4 className='text-black mt-3'>Price: 0.0 ETH</h4>
+                        <h5 className='text-black mt-3 text-muted'>Available: ∞ <br/></h5>
                         <button className='btn-xxl custombtn4 bg-success  text-white button-positioning' onClick={handleShow}> <b>Mint</b></button>
-                        <Modal className='modal-properties rounded-3' show={show} onHide={handleClose}>
-                          <Card  >
-                          <Modal.Header  closeButton>
-                            <Modal.Title className='fs-1'><b>Mint</b></Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body ><b>Select the amount of Memes to mint: </b></Modal.Body>
-                          <Modal.Footer >
-                            <Button  className='mt-2 custombtn4 border-0 bg-danger' onClick={handleClose}>
-                            <b>Close</b>
-                            </Button>
-                            <button className='btn btn-lg bg-success custombtn4 text-white' onClick={handleClose}>
-                              <b>Mint Now</b>
-                            </button>
-                          </Modal.Footer>
-                          </Card>
-                        </Modal>
+                      
                         </div>
                         
                     </div>
@@ -104,36 +97,15 @@ const Home: NextPage = () => {
                        
                         
 
-                        <div className='d-inline-block'>
-                        <h4 className='text-black mt-3'>Price: 525 USD</h4>
-                        <h5 className='text-black mt-3 text-muted'>Available: 1420 <br/>out of 5000</h5>
+                        <div className='d-inline-block text-black fw-bold fs-4'>
+                        <UserBalance/>
+                        <TotalMints/>
+                        <h4 className='text-black mt-3'>Price: 0.0 ETH</h4>
+                        <h5 className='text-black mt-3 text-muted'>Available: ∞ <br/></h5>
                         <button className=' btn-xl custombtn4 bg-success  text-white button-small-positioning ' onClick={handleShow}> <b>Mint</b></button>
-                        <Modal className='modal-properties rounded-3' show={show} onHide={handleClose}>
-                          <Card  >
-                          <Modal.Header  closeButton>
-                            <Modal.Title className='fs-1'><b>Mint</b></Modal.Title>
-                          </Modal.Header>
-                          <Modal.Body ><b>Select the amount of Memes to mint: {amountToMint}  </b><br/>
-                          <button className='border-0 mt-4 mx-2' onClick={subtractAmount}><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black" className="bi bi-dash-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M4 8a.5.5 0 0 1 .5-.5h7a.5.5 0 0 1 0 1h-7A.5.5 0 0 1 4 8z"/>
-</svg></button>
-                          <button className='border-0 mt-4' onClick={addAmount}> <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="black" className="bi bi-plus-circle" viewBox="0 0 16 16">
-  <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-  <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-</svg></button>
-                          
-                          </Modal.Body>
-                          
-                          <Modal.Footer >
-                            <Button  className='mt-2 custombtn4 border-0 bg-danger' onClick={handleClose}>
-                            <b>Close</b>
-                            </Button>
-                            <button className='btn btn-lg bg-success custombtn4 text-white' onClick={handleClose}>
-                              <b>Mint Now</b>
-                            </button>
-                          </Modal.Footer>
-                          </Card>
+                      
+                        <Modal className='padding-bottom-btn' show={show} onHide={handleClose}>
+                        <PurchaseTokens />
                         </Modal>
                         </div>
                         
