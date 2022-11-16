@@ -1,31 +1,35 @@
 // SPDX-License-Identifier: MIT
+
 pragma solidity ^0.8.17;
 
 import "@openzeppelin/contracts/token/ERC1155/ERC1155.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
-import "@openzeppelin/contracts/security/Pausable.sol";
-import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Burnable.sol";
-import "@openzeppelin/contracts/token/ERC1155/extensions/ERC1155Supply.sol";
+import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin/contracts/utils/Strings.sol";
 
-contract optiMeme is
-    ERC1155,
-    Ownable,
-    Pausable,
-    ERC1155Burnable,
-    ERC1155Supply
-{
-    constructor() ERC1155("optiMeme") {}
+interface RandomContract {
+    function displayrandomNumbers(uint256 _requestId, uint256 index)
+        external
+        returns (uint256);
+
+    function lastRequestId() external view returns (uint);
+}
+
+contract optimisticMemes is ERC1155, Ownable {
+    using SafeMath for uint256;
+    address private randomness = 0x2A96d70F4105FDeC6322B47dcD8Fa7bD72Daf48B;
+    uint256 public maxTime = 1673682915;
+    uint256 public NftMinted = 0;
+    mapping(address => uint256) stampToMint;
+    string public baseUri;
+
+    // uint256 public lastRequestId;
+    // uint256 public randomNumber;
+    constructor() ERC1155("OptiMeme") {}
 
     function setURI(string memory newuri) public onlyOwner {
         _setURI(newuri);
-    }
-
-    function pause() public onlyOwner {
-        _pause();
-    }
-
-    function unpause() public onlyOwner {
-        _unpause();
+        baseUri = newuri;
     }
 
     function mint(
@@ -34,10 +38,12 @@ contract optiMeme is
         uint256 amount,
         bytes memory data
     ) public onlyOwner {
-        // Put a require so the mint can work
-        //Require the price of the mint
+        require(
+            block.timestamp >= stampToMint[msg.sender],
+            "You are not allowed to mint yet"
+        );
         _mint(account, id, amount, data);
-        //
+        NftMinted += 1;
     }
 
     function mintBatch(
@@ -46,36 +52,46 @@ contract optiMeme is
         uint256[] memory amounts,
         bytes memory data
     ) public onlyOwner {
+        require(
+            block.timestamp >= stampToMint[msg.sender],
+            "You are not allowed to mint yet"
+        );
         _mintBatch(to, ids, amounts, data);
     }
 
-    function _beforeTokenTransfer(
-        address operator,
-        address from,
-        address to,
-        uint256[] memory ids,
-        uint256[] memory amounts,
-        bytes memory data
-    ) internal override(ERC1155, ERC1155Supply) whenNotPaused {
-        super._beforeTokenTransfer(operator, from, to, ids, amounts, data);
+    function drawForMint() public returns (uint256) {
+        stampToMint[msg.sender] = 1; //Here need to lay the future timestamp
+        return stampToMint[msg.sender];
     }
 
-    function _nftToMint() public view returns (uint) {
-        //TODO: Implement the time of the mint
-        uint timeStamp = block.timestamp;
-        uint randomTokenId = block.difficulty;
-        uint mixedRandom = uint256(timeStamp + randomTokenId) % 3500;
-        return mixedRandom;
+    function _requestRandomNumber(uint256 index) public returns (uint256) {
+        uint256 requestId = RandomContract(randomness).lastRequestId();
+        return
+            RandomContract(randomness).displayrandomNumbers(requestId, index);
     }
 
-    function _timeToMint() public view returns (uint256) {
-        return block.difficulty; //Whay if we do use signatures and this random number to
-        // Get a more random number
+    function _randomToStamp(uint256 max, uint256 randomNumber)
+        public
+        pure
+        returns (uint256)
+    {
+        // We will set a top limit of time to be minted so lets say 3 month
+        //uint256 stamp = maxTime.sub(randomNumber);
+        return randomNumber.div(max);
     }
 
-    function _time() public view returns (uint256) {
-        return block.timestamp; //Whay if we do use signatures and this random number to
-        // Get a more random number
-        //
+    /**
+     * @dev Returns an URI for a given token ID
+     */
+    function uri(uint256 _tokenId)
+        public
+        view
+        virtual
+        override
+        returns (string memory)
+    {
+        return string.concat(baseUri, Strings.toString(_tokenId));
     }
+
+    //Deploy
 }
