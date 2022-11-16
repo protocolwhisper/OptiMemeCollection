@@ -2,6 +2,16 @@ pragma solidity ^0.8.17;
 
 import "./VRFClientBase.sol";
 
+interface IPRTLToken {
+    function balanceOf(address tokenHolder) external view returns (uint256);
+
+    function send(
+        address recipient,
+        uint256 amount,
+        bytes memory data
+    ) external;
+}
+
 contract VRFClient is VRFClientBase {
     address owner;
     uint256 public diceRoll;
@@ -10,14 +20,14 @@ contract VRFClient is VRFClientBase {
 
     // For referencing VRFServiceOIC and PRTLToken contracts
     address VRFServiceOICAddress;
-    PRTLToken PRTL;
+    IPRTLToken PRTL;
 
     constructor(address _VRFServiceOICAddress, address _PRTLTokenAddress)
         VRFClientBase()
     {
         owner = msg.sender;
         VRFServiceOICAddress = _VRFServiceOICAddress;
-        PRTL = PRTLToken(_PRTLTokenAddress);
+        PRTL = IPRTLToken(_PRTLTokenAddress);
     }
 
     // This function makes a VRF request to the VRFServiceOIC contract.
